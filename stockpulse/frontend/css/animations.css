@@ -1,0 +1,43 @@
+/* ─── Page system ───────────────────────────────────────────────────── */
+.page{display:none;min-height:100vh;animation:fadeIn .4s ease;}
+.page.active{display:flex;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:translateY(0);}}
+
+/* ─── Noise overlay ─────────────────────────────────────────────────── */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity:.5;
+}
+
+/* ─── Animated background orbs ─────────────────────────────────────── */
+.bg-orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);animation:orbFloat 12s ease-in-out infinite;}
+.bg-orb-1{width:500px;height:500px;background:radial-gradient(circle,rgba(0,229,160,.07),transparent 70%);top:-10%;right:-5%;animation-delay:0s;}
+.bg-orb-2{width:400px;height:400px;background:radial-gradient(circle,rgba(124,108,252,.06),transparent 70%);bottom:-5%;left:-8%;animation-delay:-4s;}
+.bg-orb-3{width:300px;height:300px;background:radial-gradient(circle,rgba(255,107,53,.05),transparent 70%);top:40%;left:40%;animation-delay:-8s;}
+@keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(30px,-20px) scale(1.05);}66%{transform:translate(-20px,25px) scale(.95);}}
+
+/* ─── Pulse dot ─────────────────────────────────────────────────────── */
+@keyframes pulseDot{0%,100%{box-shadow:0 0 0 0 currentColor;}50%{box-shadow:0 0 0 4px transparent;}}
+
+/* ─── Shimmer ────────────────────────────────────────────────────────── */
+@keyframes shimmer{0%{background-position:-200% center;}100%{background-position:200% center;}}
+
+/* ─── Card entry ─────────────────────────────────────────────────────── */
+@keyframes cardEntry{from{opacity:0;transform:translateY(20px) scale(.97);}to{opacity:1;transform:translateY(0) scale(1);}}
+
+/* ─── Logo pulse ─────────────────────────────────────────────────────── */
+@keyframes logoPulse{0%,100%{box-shadow:0 0 20px rgba(0,229,160,.4);}50%{box-shadow:0 0 35px rgba(0,229,160,.7);}}
+
+/* ─── Floating cards ─────────────────────────────────────────────────── */
+@keyframes afcFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
+
+/* ─── Sun spin ───────────────────────────────────────────────────────── */
+@keyframes sunSpin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+
+/* ─── Draw SVG line ──────────────────────────────────────────────────── */
+@keyframes drawLine{to{stroke-dashoffset:0;}}
+
+/* ─── Toast ──────────────────────────────────────────────────────────── */
+@keyframes toastIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes toastOut{from{opacity:1;}to{opacity:0;transform:translateY(10px);}}
